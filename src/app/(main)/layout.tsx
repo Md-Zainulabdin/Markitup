@@ -5,7 +5,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="px-[20px] md:px-[50px] py-[30px]">{children}</main>
     </>
   );
 };
