@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -8,7 +8,9 @@ const Navbar = () => {
         <Image src={"/images/logo.png"} alt="Logo" width={170} height={170} />
       </div>
       <div className="menu">
-        <Button>Login</Button>
+        <Link href={"/login"} className="text-muted-foreground">
+          Login
+        </Link>
       </div>
     </nav>
   );

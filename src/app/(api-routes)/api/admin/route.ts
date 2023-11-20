@@ -5,7 +5,7 @@ import prismadb from "@/lib/prisma";
 export const POST = async (request: NextRequest) => {
   const { name, email, password, role, avatar } = await request.json();
 
-  if (!name || !email || !password || !role || avatar) {
+  if (!name || !email || !password || !role || !avatar) {
     return new NextResponse("All feilds are required!", { status: 500 });
   }
 
