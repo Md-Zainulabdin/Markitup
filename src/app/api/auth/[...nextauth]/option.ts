@@ -1,4 +1,5 @@
 import prismadb from "@/lib/prisma";
+import { compare } from "bcrypt";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -21,14 +22,26 @@ export const options: NextAuthOptions = {
       async authorize(credentials): Promise<any> {
         const { email, password } = credentials as unknown as MyCredentials;
 
-        // const user = await prismadb.admin.findMany({});
-        // console.log(user);
+        const user = await prismadb.admin.findUnique({
+          where: {
+            email,
+          },
+        });
 
-        if (email === "test@example.com" && password === "password123") {
-          return Promise.resolve({ email });
+        if (!user) {
+          throw new Error("User not found!");
         }
 
-        return null;
+        const isMatched = await compare(password, user?.password);
+
+        if (!isMatched) {
+          throw new Error("Password not Matched!");
+        }
+
+        return {
+          ...user,
+          image: user?.avatar,
+        };
       },
     }),
   ],
