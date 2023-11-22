@@ -1,45 +1,80 @@
 "use client";
-import { signIn } from "next-auth/react";
-import React from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-const LoginPage: React.FC = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+const formSchema = z.object({
+  email: z.string().min(2, "email is required!").max(50),
+  password: z
+    .string()
+    .min(8, "Your password contain atleast 8 character")
+    .max(50),
+});
 
-  const onSubmitHandler = async (e: any) => {
-    e.preventDefault();
+type LoginFormValues = z.infer<typeof formSchema>;
 
-    // console.log(email, password);
+const LoginForm = () => {
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+  function onSubmit(values: LoginFormValues) {
+    console.log(values);
+  }
 
-    console.log(res);
-    
-  };
   return (
     <div>
-      <form onSubmit={onSubmitHandler}>
-        <input
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <div className="form-area">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your email..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <button>Submit</button>
-      </form>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your password..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button type="submit">Login</Button>
+          </form>
+        </Form>
+      </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default LoginForm;

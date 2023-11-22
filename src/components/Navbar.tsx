@@ -8,7 +8,7 @@ const Navbar: React.FC = async () => {
   console.log(session);
 
   return (
-    <nav className="w-full h-[80px] border-b flex justify-between items-center px-[20px] md:px-[50px]">
+    <nav className="w-full h-[80px] fixed top-0 left-0 border-b flex justify-between items-center px-[20px] md:px-[50px]">
       <div className="logo text-indigo-500">
         <Image src={"/images/logo.png"} alt="Logo" width={170} height={170} />
       </div>
