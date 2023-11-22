@@ -21,7 +21,7 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials): Promise<any> {
         const { email, password } = credentials as unknown as MyCredentials;
-
+        
         const user = await prismadb.admin.findUnique({
           where: {
             email,

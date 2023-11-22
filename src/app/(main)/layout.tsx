@@ -1,9 +1,10 @@
-import React from "react";
+import Navbar from "@/components/Navbar";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <main className="px-[20px] md:px-[50px] py-[30px]">{children}</main>
+      <Navbar />
+      <main className="px-[20px] md:px-[50px]">{children}</main>
     </>
   );
 };

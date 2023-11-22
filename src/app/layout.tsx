@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import AuthProvider from "@/providers/Auth-Provider";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "MarkitUp - Content Marketing at its best",
@@ -14,10 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        <main className="mt-20">{children}</main>
-      </body>
+      <AuthProvider>
+        <body>
+          <main className="bg-[#fafafa]">{children}</main>
+          <Toaster />
+        </body>
+      </AuthProvider>
     </html>
   );
 }
