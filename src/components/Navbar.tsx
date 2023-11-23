@@ -14,7 +14,15 @@ const Navbar: React.FC = async () => {
       <div className="logo text-indigo-500">
         <Image src={"/images/logo.png"} alt="Logo" width={170} height={170} />
       </div>
-      <div className="menu">
+      <div className="menu space-x-4">
+        {session && (
+          <>
+            <Link href={"/"} className="text-md text-muted-foreground">
+              Dashboard
+            </Link>
+            <span className="text-md text-muted-foreground">|</span>
+          </>
+        )}
         {session ? (
           <Logout />
         ) : (
