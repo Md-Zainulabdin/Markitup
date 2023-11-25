@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-[80vh]">
       <div className="w-full h-full flex items-center justify-center flex-col gap-6">
         <div>
           {" "}
@@ -35,9 +36,16 @@ const Hero = () => {
         </div>
 
         <div className="flex items-center justify-center gap-6 flex-wrap">
-          <Button size={"lg"}>Contact Us</Button>
+          <Button size={"lg"}>
+            <Link href={"https://bit.ly/contactmarkitup"} target="_blank">
+              Contact us
+            </Link>
+          </Button>
           <Button size={"lg"} variant={"secondary"}>
-            Download Brochure
+            <Link
+              href="https://drive.google.com/file/d/1Sc--LpkSRmWgGzp2uQhi78h9062630GG/view?usp=sharing"
+              target="_blank"
+            >Download Brochure</Link>
           </Button>
         </div>
       </div>

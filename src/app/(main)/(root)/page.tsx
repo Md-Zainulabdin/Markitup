@@ -1,3 +1,4 @@
+import Clients from "./components/Clients";
 import Hero from "./components/Hero";
 
 const Home = () => {
@@ -6,6 +7,12 @@ const Home = () => {
       <div>
         <Hero />
       </div>
+
+      <div>
+        <Clients />
+      </div>
+
+      <div className="light-line"></div>
     </div>
   );
 };
