@@ -1,7 +1,7 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-const Clients = () => {
+const Clients: React.FC = () => {
   return (
     <div className="parent flex flex-col gap-8 text-center">
         <div className="client-title pb-6">

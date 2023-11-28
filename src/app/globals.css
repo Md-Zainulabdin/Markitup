@@ -61,3 +61,24 @@ body {
 .company-logo {
   margin-right: 70px;
 }
+
+.light_line {
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    rgba(161, 161, 161, 0),
+    #dadbdd 50%,
+    rgba(13, 17, 23, 0)
+  );
+}
+
+#services_paragraph {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  /* Add ellipsis to indicate text truncation */
+  text-overflow: ellipsis;
+}

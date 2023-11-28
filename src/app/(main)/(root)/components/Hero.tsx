@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <div className="w-full h-[80vh]">
       <div className="w-full h-full flex items-center justify-center flex-col gap-6">
         <div>
           {" "}
-          <h2 className="text-md text-muted-foreground">👑</h2>
+          <h2 className="text-md text-muted-foreground">🖤</h2>
         </div>
 
         <div className="text-center space-y-4">
@@ -45,7 +45,9 @@ const Hero = () => {
             <Link
               href="https://drive.google.com/file/d/1Sc--LpkSRmWgGzp2uQhi78h9062630GG/view?usp=sharing"
               target="_blank"
-            >Download Brochure</Link>
+            >
+              Download Brochure
+            </Link>
           </Button>
         </div>
       </div>

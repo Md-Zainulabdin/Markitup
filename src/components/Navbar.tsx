@@ -17,7 +17,7 @@ const Navbar: React.FC = async () => {
       <div className="menu space-x-4">
         {session && (
           <>
-            <Link href={"/"} className="text-md text-muted-foreground">
+            <Link href={"/"} className="text-md text-muted-foreground hover:text-primary transition-colors">
               Dashboard
             </Link>
             <span className="text-md text-muted-foreground">|</span>
