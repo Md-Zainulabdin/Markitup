@@ -76,7 +76,7 @@ body {
 #services_paragraph {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   white-space: normal;
   /* Add ellipsis to indicate text truncation */

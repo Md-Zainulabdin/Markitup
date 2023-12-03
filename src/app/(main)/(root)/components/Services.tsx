@@ -1,7 +1,11 @@
-import { TfiWorld } from "react-icons/tfi";
+import { SiMaterialdesignicons, SiYoutubestudio } from "react-icons/si";
+import { AiOutlineVideoCameraAdd } from "react-icons/ai";
+import { MdOutlineDesignServices } from "react-icons/md";
+import { TbSocial, TbDeviceIpadShare } from "react-icons/tb";
 
 const serviceCards = [
   {
+    icon: <TbSocial />,
     title: "Social Media Management",
     subHeading: "Instagram, Linkedin and more",
     description: `Amplify your social media impact through expert management services. We devise captivating
@@ -9,6 +13,7 @@ const serviceCards = [
   },
 
   {
+    icon: <SiYoutubestudio />,
     title: "360° Youtube Management",
     subHeading: "For Brands and Influencers",
     description: `All-encompassing support for startegy, post-production, operations, and analytics, driving
@@ -16,6 +21,7 @@ const serviceCards = [
   `,
   },
   {
+    icon: <MdOutlineDesignServices />,
     title: "Graphic Designing",
     subHeading: "Mutipurpose Designing ",
     description: `Elevate your brand with versatile, tailored multipurpose graphic design services: stunning
@@ -24,6 +30,7 @@ const serviceCards = [
   `,
   },
   {
+    icon: <AiOutlineVideoCameraAdd />,
     title: "Video Editing",
     subHeading: "Vlogs, Tutorials, Educational etc.",
     description: `Transform your raw footage into stunning, engaging videos with our professional video
@@ -32,6 +39,7 @@ const serviceCards = [
   `,
   },
   {
+    icon: <TbDeviceIpadShare />,
     title: " Advertising",
     subHeading: "Facebook, Instagram and Google",
     description: `Empower your brand with Facebook, Instagram, Google, and YouTube advertising. Reach
@@ -40,6 +48,7 @@ const serviceCards = [
   `,
   },
   {
+    icon: <SiMaterialdesignicons />,
     title: " Social Media Consulting",
     subHeading: "Calls for building strategy",
     description: ` Maximize YouTube success with expert consulting: in-depth channel analysis, innovative
@@ -61,24 +70,26 @@ const Services: React.FC = () => {
       <div className="services-cards w-full flex items-center justify-center flex-wrap gap-8 py-10">
         {serviceCards.map((card) => (
           <div
-            className="w-[350px] p-8 bg-[#fff] flex flex-col items-start gap-3 border border-[#f8f8f8] hover:border-[#ccc] rounded-md duration-300 ease-in-out cursor-pointer"
+            className="text-center w-[350px] p-8 bg-[#fff] flex flex-col items-center gap-3 border border-[#f8f8f8] hover:border-[#ccc] rounded-md duration-300 ease-in-out cursor-pointer"
             key={card.title}
           >
-            {/* <div className="icon">{card.icon}</div> */}
+            <div className="icon p-4 text-2xl rounded-full bg-[#e1eeff] text-[#2282ff] mb-2">
+              {card.icon}
+            </div>
 
-            <div className="title">
-              <h1 className="text-xl font-bold inter-font text-[#222]">
+            <div className="title w-full text-center">
+              <h1 className="text-lg font-bold inter-font text-[#222] hover:text-[#4da6e7] transition-colors">
                 {card.title}
               </h1>
             </div>
 
-            <div className="sub-heading font-semibold text-[#555]">
+            {/* <div className="sub-heading font-semibold text-[#555]">
               <h2>{card.subHeading}</h2>
-            </div>
+            </div> */}
 
             <div>
               <p
-                className="text-sm text-muted-foreground"
+                className="text-sm text-muted-foreground text-left leading-loose"
                 id="services_paragraph"
               >
                 {card.description}
