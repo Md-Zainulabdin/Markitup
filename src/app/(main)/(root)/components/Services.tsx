@@ -70,7 +70,7 @@ const Services: React.FC = () => {
       <div className="services-cards w-full flex items-center justify-center flex-wrap gap-8 py-10">
         {serviceCards.map((card) => (
           <div
-            className="text-center w-[350px] p-8 bg-[#fff] flex flex-col items-center gap-3 border border-[#f8f8f8] hover:border-[#ccc] rounded-md duration-300 ease-in-out cursor-pointer"
+            className="text-center w-[350px] p-8 bg-[#fff] flex flex-col items-center gap-3 border border-[#f8f8f8] hover:border-[#ccc] rounded-lg duration-300 ease-in-out cursor-pointer"
             key={card.title}
           >
             <div className="icon p-4 text-2xl rounded-full bg-[#e1eeff] text-[#2282ff] mb-2">

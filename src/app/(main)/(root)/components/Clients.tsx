@@ -7,7 +7,7 @@ const Clients: React.FC = () => {
         <div className="client-title pb-6">
         <h3 className="text-lg font-semibold text-[#222]">Our Trusted Clients</h3>
         </div>
-      <div className="client-company w-full cursor-grab">
+      <div className="client-company w-full cursor-grab z-0">
         <Marquee
           gradient={true}
           speed={40}

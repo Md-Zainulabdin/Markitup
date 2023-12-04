@@ -13,7 +13,7 @@ const Home = () => {
         <Clients />
       </div>
 
-      <div className="light_line my-8"></div>
+      <div className="light_line my-10"></div>
 
       <div>
         <Services/>

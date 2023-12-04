@@ -28,7 +28,7 @@ const formSchema = z.object({
 
 type LoginFormValues = z.infer<typeof formSchema>;
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
   const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
