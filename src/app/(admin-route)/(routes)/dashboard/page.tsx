@@ -1,11 +1,9 @@
-import { options } from "@/app/api/auth/[...nextauth]/option";
-import { getServerSession } from "next-auth";
-import React from "react";
+import { getAuth } from "@/lib/auth";
 import UserAvatar from "./_components/Avatar";
 import { Separator } from "@/components/ui/separator";
 
 const Dashboard: React.FC = async () => {
-  const session = await getServerSession(options);
+  const auth = await getAuth();
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -16,7 +14,7 @@ const Dashboard: React.FC = async () => {
         </div>
 
         <div className="avatar">
-          <UserAvatar url={session?.user?.image || ""} />
+          <UserAvatar url={auth?.user?.image || ""} />
         </div>
       </div>
 
@@ -24,9 +22,10 @@ const Dashboard: React.FC = async () => {
         <Separator />
       </div>
 
-      <div className="greeting">
-        <h1>Hey</h1>
-        <h2>{session?.user?.name}</h2>
+      <div className="greeting flex flex-col gap-3">
+        <h1 className="text-3xl font-semibold text-[#333]">
+          Welcome, {auth?.user?.name}
+        </h1>
       </div>
     </div>
   );

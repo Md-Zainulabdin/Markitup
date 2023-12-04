@@ -1,11 +1,10 @@
-import { getServerSession } from "next-auth";
-import { options } from "@/app/api/auth/[...nextauth]/option";
+import { getAuth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 const AdminLayout = async ({ children }: { children: React.ReactNode }) => {
-  const session = await getServerSession(options);
+  const auth = await getAuth();
 
-  if (!session) redirect("/");
+  if (!auth) redirect("/");
   return <>{children}</>;
 };
 
