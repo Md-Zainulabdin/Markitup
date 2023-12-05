@@ -31,9 +31,6 @@ export const POST = async (request: NextRequest) => {
 
 export const PATCH = async (request: NextRequest) => {
   const { name, email, password, avatar } = await request.json();
-  // if (!session) {
-  //   return new NextResponse("unAuthorized", { status: 500 });
-  // }
 
   if (!name || !email || !password || !avatar) {
     return new NextResponse("All feilds are required!", { status: 500 });
@@ -53,9 +50,8 @@ export const PATCH = async (request: NextRequest) => {
     //     avatar,
     //   },
     // });
-
     // console.log(updatedUser);
-
+    //
     // return NextResponse.json(updatedUser, { status: 201 });
   } catch (error) {
     console.log("USER-PATCH", error);
