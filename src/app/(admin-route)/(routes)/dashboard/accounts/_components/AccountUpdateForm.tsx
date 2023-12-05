@@ -1,6 +1,7 @@
 "use client";
 import * as z from "zod";
 
+import axios from "axios";
 import { Admin } from "@prisma/client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -18,6 +19,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import ImageUpload from "@/components/Image-Upload";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface AccountUpdateFormProps {
   initialData: Admin | null;
@@ -45,7 +48,8 @@ const AccountUpdateForm: React.FC<AccountUpdateFormProps> = ({
     spinner: Loader2,
   };
 
-  const [loading, setLoading] = useState();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const data = {
     name: initialData?.name || "",
@@ -67,7 +71,22 @@ const AccountUpdateForm: React.FC<AccountUpdateFormProps> = ({
   });
 
   const onSubmitHandler = async (data: AccountUpdateFormValue) => {
-    console.log(data);
+    if (data.password !== data.confirmPassword) {
+      toast.error("Password not matched!");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await axios.patch(`/api/admin/${initialData?.id}`, data);
+      toast.success("User updated!");
+      router.refresh();
+    } catch (error) {
+      console.log("update-form-error", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

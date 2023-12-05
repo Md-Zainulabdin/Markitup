@@ -2,30 +2,34 @@ import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import prismadb from "@/lib/prisma";
 
-export const POST = async (request: NextRequest) => {
-  const { name, email, password, role, avatar } = await request.json();
+export const PATCH = async (
+  request: NextRequest,
+  { params }: { params: { userId: string } }
+) => {
+  const { name, email, password, avatar } = await request.json();
 
-  if (!name || !email || !password || !role || !avatar) {
+  if (!name || !email || !password || !avatar) {
     return new NextResponse("All feilds are required!", { status: 500 });
   }
 
   const hashedPassword = await hash(password, 10);
 
   try {
-    const admin = await prismadb.admin.create({
+    const updatedUser = await prismadb.admin.update({
+      where: {
+        id: params.userId,
+      },
       data: {
         name,
         email,
-        role,
-        avatar,
         password: hashedPassword,
+        avatar,
       },
     });
 
-    return NextResponse.json(admin, { status: 201 });
+    return NextResponse.json(updatedUser, { status: 201 });
   } catch (error) {
-    console.log("USER-POST", error);
+    console.log("USER-PATCH", error);
     return new NextResponse("Internal Error", { status: 400 });
   }
 };
-
