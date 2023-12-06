@@ -27,7 +27,7 @@ export const PATCH = async (
     });
     return NextResponse.json(updatedService, { status: 201 });
   } catch (error) {
-    console.log("USER-PATCH", error);
+    console.log("SERVICE-PATCH", error);
     return new NextResponse("Internal Error", { status: 400 });
   }
 };

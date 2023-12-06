@@ -37,7 +37,7 @@ export const PATCH = async (
 
     return NextResponse.json(updatedPortfolio, { status: 201 });
   } catch (error) {
-    console.log("SERVICE-POST", error);
+    console.log("PORTFOLIO-PATCH", error);
     return new NextResponse("Internal Error", { status: 400 });
   }
 };

@@ -7,6 +7,7 @@ export const POST = async (request: NextRequest) => {
 
     if (!heading || !subHeading || !description) {
       return new NextResponse("All feilds are required!", { status: 500 });
+
     }
 
     const service = await prismadb.service.create({
