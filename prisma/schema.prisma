@@ -18,39 +18,31 @@ enum Role {
 model Admin {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   avatar    String
   role      Role      @default(ADMIN)
-  accounts  Account[]
-  sessions  Session[]
 }
 
-model Account {
-  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String    @db.ObjectId
-  providerType       String
-  providerId         String
-  providerAccountId  String
-  refreshToken       String?
-  accessToken        String?
-  accessTokenExpires DateTime?
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  user               Admin     @relation(fields: [userId], references: [id])
 
-  @@unique([providerId, providerAccountId])
+model Service {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  heading     String   @unique
+  subHeading  String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
-model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String   @db.ObjectId
-  expires      DateTime
-  sessionToken String   @unique
-  accessToken  String   @unique
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  user         Admin    @relation(fields: [userId], references: [id])
+model Portfolio {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  imageUrl    String
+  projectLink String
+  category    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

@@ -5,7 +5,7 @@ import UserAvatar from "../_components/Avatar";
 import { Separator } from "@/components/ui/separator";
 import AccountUpdateForm from "./_components/AccountUpdateForm";
 
-const Accounts = async () => {
+const Accounts: React.FC = async () => {
   const auth = await getAuth();
   const data = await getUserByEmail(auth?.user?.email || "");
 
