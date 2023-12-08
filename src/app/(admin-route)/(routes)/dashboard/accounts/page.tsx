@@ -9,7 +9,6 @@ const Accounts: React.FC = async () => {
   const auth = await getAuth();
   const data = await getUserByEmail(auth?.user?.email || "");
 
-  // console.log("data", auth);
 
   return (
     <div>

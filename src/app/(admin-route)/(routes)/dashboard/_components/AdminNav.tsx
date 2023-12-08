@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { MdOutlineHome } from "react-icons/md";
 import { ActivitySquare, Combine, UserCircle } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const AdminNav = () => {
+  const pathname = usePathname();
+
   const links = [
     {
-      icon: <MdOutlineHome size={28}/>,
+      icon: <MdOutlineHome size={28} />,
       herf: "/dashboard",
       label: "Home",
     },
@@ -32,21 +37,31 @@ const AdminNav = () => {
     <div className="w-full h-full p-8">
       <div className="w-full flex flex-col">
         <div className="logo">
-          <Image
-            src={`/images/logo.png`}
-            alt="Dashboard Logo"
-            width={180}
-            height={150}
-          />
+          <Link href={"/"}>
+            {" "}
+            <Image
+              src={`/images/logo.png`}
+              alt="Dashboard Logo"
+              width={180}
+              height={150}
+            />
+          </Link>
         </div>
 
         <div className="menu-links mt-20 flex flex-col gap-6">
           {links.map((item, index) => (
-            <div key={index} className="flex text-muted-foreground hover:text-[#222] transition-colors items-center gap-4">
+            <div
+              key={index}
+              className={`flex ${
+                pathname === item.herf
+                  ? "text-primary"
+                  : "text-muted-foreground"
+              } hover:text-primary transition-colors items-center gap-4`}
+            >
               <span>{item.icon}</span>
               <Link
                 href={item.herf}
-                className="text-lg text-muted-foreground hover:text-[#222] transition-colors"
+                className="text-lg text-muted-foreground hover:text-primary transition-colors"
               >
                 {item.label}
               </Link>
