@@ -18,7 +18,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import ImageUpload from "@/components/Image-Upload";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,7 +40,7 @@ const formSchema = z.object({
   }),
 });
 
-const AccountUpdateForm: React.FC<ServiceFormProps> = ({ initialData }) => {
+const ServiceForm: React.FC<ServiceFormProps> = ({ initialData }) => {
   //spinner
   const Icons = {
     spinner: Loader2,
@@ -159,4 +158,4 @@ const AccountUpdateForm: React.FC<ServiceFormProps> = ({ initialData }) => {
   );
 };
 
-export default AccountUpdateForm;
+export default ServiceForm;

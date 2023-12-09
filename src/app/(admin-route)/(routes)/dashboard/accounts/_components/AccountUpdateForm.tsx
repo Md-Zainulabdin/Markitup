@@ -110,6 +110,7 @@ const AccountUpdateForm: React.FC<AccountUpdateFormProps> = ({
                     onRemove={() => field.onChange("")}
                     onchange={(url) => field.onChange(url)}
                     value={field.value ? [field.value] : []}
+                    rounded={true}
                   />
                 </FormControl>
                 <FormMessage />

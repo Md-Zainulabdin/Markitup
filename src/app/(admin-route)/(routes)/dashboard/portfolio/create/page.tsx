@@ -1,30 +1,20 @@
 import React from "react";
+import UserAvatar from "../../_components/Avatar";
 import { getAuth } from "@/lib/auth";
 import { Separator } from "@/components/ui/separator";
-import UserAvatar from "../../../_components/Avatar";
-import ServiceForm from "../../_components/ServiceForm";
-import prismadb from "@/lib/prisma";
+import PortfolioForm from "../_components/PortfolioForm";
 
-const CreateServicePage = async ({
-  params,
-}: {
-  params: { serviceId: string };
-}) => {
+const CreateServicePage: React.FC = async () => {
   const auth = await getAuth();
-  const uniqueService = await prismadb.service.findUnique({
-    where: {
-      id: params.serviceId,
-    },
-  });
   return (
     <div>
       <div className="banner flex items-center justify-between">
         <div className="title">
           <h1 className="text-3xl font-semibold text-primary">
-            Update Service
+            Create Portfolio
           </h1>
           <p className="text-md text-muted-foreground">
-            Add more service in your company
+            Add more Portfolio in your company
           </p>
         </div>
 
@@ -38,7 +28,7 @@ const CreateServicePage = async ({
       </div>
 
       <div className="create-form">
-        <ServiceForm initialData={uniqueService} />
+        <PortfolioForm />
       </div>
     </div>
   );

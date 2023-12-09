@@ -2,7 +2,7 @@ import React from "react";
 import UserAvatar from "../../_components/Avatar";
 import { getAuth } from "@/lib/auth";
 import { Separator } from "@/components/ui/separator";
-import ServiceForm from "../_components/CreateService";
+import ServiceForm from "../_components/ServiceForm";
 
 const CreateServicePage: React.FC = async () => {
   const auth = await getAuth();
