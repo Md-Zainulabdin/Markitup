@@ -1,20 +1,20 @@
 "use client";
 import { format } from "date-fns";
 
-import { Service } from "@prisma/client";
+import { Portfolio } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
 
-export const columns: ColumnDef<Service>[] = [
+export const columns: ColumnDef<Portfolio>[] = [
   {
-    accessorKey: "heading",
+    accessorKey: "title",
     header: () => <div className="px-4 py-2">Title</div>,
   },
   {
-    accessorKey: "subHeading",
-    header: "Sub-Heading",
+    accessorKey: "category",
+    header: "Category",
     cell: ({ row }) => (
-        <div className="text-muted-foreground">{row.original.subHeading}</div>
+        <div className="text-muted-foreground">{row.original.category}</div>
       ),
   },
   {

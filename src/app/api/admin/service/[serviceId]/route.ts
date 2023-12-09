@@ -31,3 +31,26 @@ export const PATCH = async (
     return new NextResponse("Internal Error", { status: 400 });
   }
 };
+
+
+export const DELETE = async (
+    request: NextRequest,
+    { params }: { params: { serviceId: string } }
+  ) => {
+  
+    if (!params.serviceId) {
+      return new NextResponse("Service Id is required!", { status: 400 });
+    }
+    try {
+      const deletedService = await prismadb.service.delete({
+        where: {
+          id: params.serviceId,
+        }
+      });
+      return NextResponse.json(deletedService, { status: 201 });
+    } catch (error) {
+      console.log("SERVICE-DELETE", error);
+      return new NextResponse("Internal Error", { status: 400 });
+    }
+  };
+  

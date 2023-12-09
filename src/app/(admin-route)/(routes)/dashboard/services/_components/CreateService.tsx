@@ -64,7 +64,7 @@ const AccountUpdateForm: React.FC<ServiceFormProps> = ({ initialData }) => {
       setLoading(true);
 
       if (initialData) {
-        const res = await axios.patch(`/api/admin/service/update/${initialData.id}`, data);
+        const res = await axios.patch(`/api/admin/service/${initialData.id}`, data);
         toast.success("Service Updated!");
       } else {
         const res = await axios.post(`/api/admin/service/create`, data);

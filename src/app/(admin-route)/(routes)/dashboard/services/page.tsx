@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Plus } from "lucide-react";
+
 import UserAvatar from "../_components/Avatar";
 import { DataTable } from "./_components/data-table";
 import { columns } from "./_components/column";
@@ -7,7 +9,6 @@ import prismadb from "@/lib/prisma";
 import { getAuth } from "@/lib/auth";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const Services: React.FC = async () => {
   const auth = await getAuth();
