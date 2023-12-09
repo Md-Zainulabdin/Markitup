@@ -14,7 +14,7 @@ export const columns: ColumnDef<Portfolio>[] = [
     accessorKey: "category",
     header: "Category",
     cell: ({ row }) => (
-        <div className="text-muted-foreground">{row.original.category}</div>
+        <div><span className="text-primary bg-secondary px-2 py-1 rounded-md">{row.original.category}</span></div>
       ),
   },
   {

@@ -31,11 +31,11 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     try {
       setLoading(true);
 
-      await axios.delete(`/api/admin/service/${data.id}`);
+      await axios.delete(`/api/admin/portfolio/${data.id}`);
       router.refresh();
-      toast.success("Service Deleted!");
+      toast.success("Portfolio Deleted!");
     } catch (error) {
-      toast.error("Make sure you remove this service");
+      toast.error("Make sure you remove this Portfolio");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -62,7 +62,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() => {
-              router.push(`/dashboard/services/update/${data.id}`);
+              router.push(`/dashboard/portfolio/update/${data.id}`);
             }}
           >
             <Edit className="mr-2 h-4 w-4" />
