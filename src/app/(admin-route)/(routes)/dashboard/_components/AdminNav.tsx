@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { MdOutlineHome } from "react-icons/md";
-import { ActivitySquare, Combine, UserCircle } from "lucide-react";
+import { ActivitySquare, Combine, Network, UserCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { signOut, useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -34,6 +34,11 @@ const AdminNav = () => {
       icon: <ActivitySquare />,
       herf: "/dashboard/portfolio",
       label: "Porfolio",
+    },
+    {
+      icon: <Network />,
+      herf: "/dashboard/testimonial",
+      label: "Testimonial",
     },
   ];
 
